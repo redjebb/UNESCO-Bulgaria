@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ЮНЕСКО България &mdash; Културно и природно наследство</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Основна навигация">
+      <div class="branding">
+        <span class="logo-mark" aria-hidden="true">UNESCO BG</span>
+        <div class="brand-text">
+          <span class="brand-title">Българско наследство</span>
+          <span class="brand-subtitle">Под закрилата на ЮНЕСКО</span>
+        </div>
+      </div>
+      <nav class="primary-nav">
+        <ul>
+          <li><a href="#hero">Начало</a></li>
+          <li><a href="#map">Карта</a></li>
+          <li><a href="#categories">Категории</a></li>
+          <li><a href="#education">Обучение</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="hero" aria-labelledby="hero-title">
+        <div class="hero-overlay"></div>
+        <!-- Placeholder for background video. Replace URL below with an actual hosted video if available. -->
+        <!-- <video class="hero-video" autoplay muted loop playsinline src="https://example.com/placeholder-unesco-bg.mp4"></video> -->
+        <div class="hero-content">
+          <p class="eyebrow">Живото наследство на България</p>
+          <h1 id="hero-title">„Българското наследство под закрилата на ЮНЕСКО“</h1>
+          <p class="hero-lede">
+            Потопете се в разказите за манастири, древни стенописи, грандиозни планини и живи традиции.
+            Всеки елемент от тази интерактивна платформа е посветен на опазването на нашата културна памет.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-cta" href="#map">Разгледайте картата</a>
+            <button class="secondary-cta" type="button" data-scroll-target="#education">Опознайте наследството</button>
+          </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true">
+          <span>Превъртете</span>
+          <div class="indicator-pill"></div>
+        </div>
+      </section>
+
+      <section id="map" class="map-section" aria-labelledby="map-title">
+        <div class="section-heading">
+          <p class="section-eyebrow">Интерактивна визуализация</p>
+          <h2 id="map-title">Карта на българските обекти на ЮНЕСКО</h2>
+          <p>
+            Открийте местоположението на шест емблематични обекта, включени в списъците на ЮНЕСКО. Задръжте курсора
+            или докоснете за кратко, за да получите бърз поглед, а за задълбочено запознаване натиснете „Виж повече“.
+          </p>
+        </div>
+        <div class="map-wrapper" role="img" aria-label="Стилнизирана карта на България с отбелязани обекти на ЮНЕСКО">
+          <svg id="bulgaria-map" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="mapGradient" cx="50%" cy="50%" r="70%">
+                <stop offset="0%" stop-color="#f5f5f5" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#c5a059" stop-opacity="0.25" />
+              </radialGradient>
+            </defs>
+            <path
+              class="map-shape"
+              d="M40 210l30-40 35-10 28-32 48-22 70-12 58-50 70 8 56 24 62-8 28 28 40 10 15 40-22 40 16 44-12 32-50 10-18 32-36 18-44-4-40 16-68 4-60 20-44-10-40-6-40-24-44-6-36-26-34-12-20-34 6-36z"
+              fill="url(#mapGradient)"
+              stroke="#c5a059"
+              stroke-width="3"
+              stroke-linejoin="round"
+            ></path>
+            <g class="site-marker" data-site-id="rilamonastery" transform="translate(250,160)">
+              <circle r="10" class="marker-circle"></circle>
+              <text y="-20">Рила</text>
+            </g>
+            <g class="site-marker" data-site-id="boyanachurch" transform="translate(320,150)">
+              <circle r="10" class="marker-circle"></circle>
+              <text y="-20">Бояна</text>
+            </g>
+            <g class="site-marker" data-site-id="pirinpark" transform="translate(420,130)">
+              <circle r="10" class="marker-circle"></circle>
+              <text y="-20">Пирин</text>
+            </g>
+            <g class="site-marker" data-site-id="srebarna" transform="translate(520,200)">
+              <circle r="10" class="marker-circle"></circle>
+              <text y="-20">Сребърна</text>
+            </g>
+            <g class="site-marker" data-site-id="nestinarstvo" transform="translate(360,260)">
+              <circle r="10" class="marker-circle"></circle>
+              <text y="-20">Нестинарство</text>
+            </g>
+            <g class="site-marker" data-site-id="surva" transform="translate(280,220)">
+              <circle r="10" class="marker-circle"></circle>
+              <text y="-20">Сурва</text>
+            </g>
+          </svg>
+          <div id="map-tooltip" class="map-tooltip" role="dialog" aria-live="polite" hidden>
+            <div class="tooltip-content">
+              <p class="tooltip-category"></p>
+              <h3 class="tooltip-title"></h3>
+              <button class="tooltip-button" type="button">Виж повече</button>
+            </div>
+          </div>
+        </div>
+        <div class="map-legend" aria-label="Легенда на карта">
+          <span><span class="legend-dot cultural"></span> Културно</span>
+          <span><span class="legend-dot natural"></span> Природно</span>
+          <span><span class="legend-dot intangible"></span> Нематериално</span>
+        </div>
+      </section>
+
+      <section id="categories" class="categories-section" aria-labelledby="categories-title">
+        <div class="section-heading">
+          <p class="section-eyebrow">Курация по теми</p>
+          <h2 id="categories-title">Категории на българското наследство</h2>
+          <p>
+            Всеки обект носи различно послание &mdash; от вековна духовност до живи ритуали. Използвайте картите
+            по-долу, за да откриете контекста и да отворите детайлно описание.
+          </p>
+        </div>
+        <div class="category-grid">
+          <article class="category-card" data-category="cultural">
+            <header>
+              <p class="category-eyebrow">Културно наследство</p>
+              <h3>Храмове на духа и знанието</h3>
+            </header>
+            <p>
+              Камък и стенопис съхраняват паметта на българската духовност. Открийте защо тези обители са ценени в цял свят.
+            </p>
+            <ul class="category-sites">
+              <li>
+                <button class="site-trigger" type="button" data-site-id="rilamonastery">Рилски манастир</button>
+              </li>
+              <li>
+                <button class="site-trigger" type="button" data-site-id="boyanachurch">Боянска църква</button>
+              </li>
+            </ul>
+          </article>
+          <article class="category-card" data-category="natural">
+            <header>
+              <p class="category-eyebrow">Природно наследство</p>
+              <h3>Пейзажи на изключителна красота</h3>
+            </header>
+            <p>
+              Планински върхове, ледникови езера и биосферни съкровища демонстрират силата и крехкостта на природата.
+            </p>
+            <ul class="category-sites">
+              <li>
+                <button class="site-trigger" type="button" data-site-id="pirinpark">Национален парк „Пирин“</button>
+              </li>
+              <li>
+                <button class="site-trigger" type="button" data-site-id="srebarna">Биосферен резерват „Сребърна“</button>
+              </li>
+            </ul>
+          </article>
+          <article class="category-card" data-category="intangible">
+            <header>
+              <p class="category-eyebrow">Нематериално наследство</p>
+              <h3>Живи традиции и ритуали</h3>
+            </header>
+            <p>
+              Огън, маски и ритъм. Познайте обичаите, които продължават да събират общностите и да пазят идентичността ни.
+            </p>
+            <ul class="category-sites">
+              <li>
+                <button class="site-trigger" type="button" data-site-id="nestinarstvo">Нестинарство</button>
+              </li>
+              <li>
+                <button class="site-trigger" type="button" data-site-id="surva">Фестивал „Сурва“</button>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="education" class="education-section" aria-labelledby="education-title">
+        <div class="section-heading">
+          <p class="section-eyebrow">Обучителна платформа</p>
+          <h2 id="education-title">Времева линия и интерактивен квиз</h2>
+          <p>
+            Проследете ключовите години, в които българското наследство получава световно признание, и тествайте знанията си
+            с кратък квиз. Резултатите се визуализират веднага, за да насърчат критичното мислене.
+          </p>
+        </div>
+        <div class="education-grid">
+          <article class="timeline-panel" aria-label="Интерактивна времева линия">
+            <header>
+              <h3>Времева линия на признанието</h3>
+              <p>Кликнете върху елемент, за да научите повече за конкретния обект и годината на включване.</p>
+            </header>
+            <div class="timeline" id="timeline" role="list"></div>
+            <div class="timeline-detail" id="timeline-detail">
+              <h4 class="timeline-title">Изберете година</h4>
+              <p class="timeline-description">
+                Историята на нашето наследство се разгръща тук. Изберете точка на линията, за да прочетете събитията зад нея.
+              </p>
+              <button class="timeline-button" type="button" hidden>Виж детайлите</button>
+            </div>
+          </article>
+          <article class="quiz-panel" aria-label="Квиз за българското наследство">
+            <header>
+              <h3>Кратък квиз</h3>
+              <p>Отговорете на пет въпроса и вижте незабавно дали сте познали.</p>
+            </header>
+            <form id="heritage-quiz" novalidate></form>
+            <div class="quiz-summary" id="quiz-summary" aria-live="polite"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Футър">
+      <div class="footer-content">
+        <p>&copy; <span id="current-year"></span> Българско наследство &mdash; ЮНЕСКО.</p>
+        <p class="footer-note">
+          Проект за образователни цели. Данните са подбрани от публично достъпни източници на ЮНЕСКО.
+        </p>
+      </div>
+    </footer>
+
+    <div id="site-modal" class="site-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-overlay" data-close-modal></div>
+      <div class="modal-container" role="document">
+        <button class="modal-close" type="button" data-close-modal aria-label="Затвори детайлите">
+          &times;
+        </button>
+        <div class="modal-header">
+          <p class="modal-category"></p>
+          <h3 class="modal-title"></h3>
+        </div>
+        <div class="modal-body">
+          <div class="modal-gallery" aria-label="Галерия с изображения">
+            <!-- Заменете фоновете на блоковете по-долу със снимки при нужда. -->
+            <div class="gallery-frame" data-gallery-slot="1"></div>
+            <div class="gallery-frame" data-gallery-slot="2"></div>
+            <div class="gallery-frame" data-gallery-slot="3"></div>
+          </div>
+          <div class="modal-content">
+            <p class="modal-description"></p>
+            <div class="modal-facts">
+              <h4>Бързи факти</h4>
+              <ul class="facts-list"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span class="modal-year"></span>
+          <button class="modal-secondary" type="button" data-close-modal>Затвори</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
