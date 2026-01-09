@@ -250,11 +250,11 @@ function initMapInteractions() {
     marker.addEventListener("pointerleave", () => scheduleHide());
     marker.addEventListener("focus", (event) => positionTooltip(event, marker.getAttribute("data-site-id")));
     marker.addEventListener("blur", scheduleHide);
-    marker.addEventListener("click", () => openModal(marker.getAttribute("data-site-id")));
+    marker.addEventListener("click", () => openSiteDetailPage(marker.getAttribute("data-site-id")));
     marker.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        openModal(marker.getAttribute("data-site-id"));
+        openSiteDetailPage(marker.getAttribute("data-site-id"));
       }
     });
   });
@@ -264,7 +264,7 @@ function initMapInteractions() {
 
   tooltipButton.addEventListener("click", () => {
     if (activeMarkerId) {
-      openModal(activeMarkerId);
+      openSiteDetailPage(activeMarkerId);
     }
   });
 
@@ -302,7 +302,7 @@ function initCategoryTriggers() {
   triggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
       const siteId = trigger.getAttribute("data-site-id");
-      openModal(siteId);
+      openSiteDetailPage(siteId);
     });
   });
 }
@@ -365,7 +365,7 @@ function initTimeline() {
   detailButton.addEventListener("click", () => {
     const siteId = detailButton.dataset.siteId;
     if (siteId) {
-      openModal(siteId);
+      openSiteDetailPage(siteId);
     }
   });
 }
@@ -464,6 +464,55 @@ function initQuiz() {
 }
 
 function openModal(siteId) {
+  const site = siteData[siteId];
+  if (!site) return;
+
+  const modal = document.getElementById("site-modal");
+  if (!modal) return;
+
+  const categoryEl = modal.querySelector(".modal-category");
+  const titleEl = modal.querySelector(".modal-title");
+  const descriptionEl = modal.querySelector(".modal-description");
+  const factsList = modal.querySelector(".facts-list");
+  const yearEl = modal.querySelector(".modal-year");
+  const galleryFrames = modal.querySelectorAll(".gallery-frame");
+
+  if (!categoryEl || !titleEl || !descriptionEl || !factsList || !yearEl || !galleryFrames.length) {
+    return;
+  }
+
+  categoryEl.textContent = site.category.toUpperCase();
+  categoryEl.style.color = categoryColors[site.categoryKey] || "";
+  titleEl.textContent = site.name;
+  descriptionEl.textContent = site.description;
+  yearEl.textContent = `Включен в ЮНЕСКО: ${site.year}`;
+
+  factsList.innerHTML = "";
+  site.facts.forEach((fact) => {
+    const li = document.createElement("li");
+    li.textContent = fact;
+    factsList.appendChild(li);
+  });
+
+  galleryFrames.forEach((frame, index) => {
+    const label = site.galleryLabels[index] || "Плейсхолдър";
+    frame.setAttribute("data-label", label);
+  });
+
+  lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  activeModal = modal;
+
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("no-scroll");
+
+  refreshModalFocusableElements();
+
+  const preferredFocus = modal.querySelector(".modal-close") || modalFocusableElements[0] || null;
+  preferredFocus?.focus({ preventScroll: true });
+}
+
+function openSiteDetailPage(siteId) {
   const site = siteData[siteId];
   if (!site) return;
 

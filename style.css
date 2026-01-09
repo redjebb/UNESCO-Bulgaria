@@ -96,15 +96,19 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem clamp(1.5rem, 3vw, 4rem);
-  background: rgba(20, 20, 20, 0.85);
+  background: rgba(20, 20, 20, 0.95);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .branding {
   display: flex;
   align-items: center;
   gap: 1.2rem;
+  flex: 1;
+  min-width: 280px;
 }
 
 .logo-mark {
@@ -118,6 +122,13 @@ main {
   font-size: 0.7rem;
   letter-spacing: 0.6em;
   padding-right: 0.6em;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .brand-title {
@@ -125,6 +136,7 @@ main {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
+  line-height: 1.2;
 }
 
 .brand-subtitle {
@@ -132,6 +144,11 @@ main {
   letter-spacing: 0.2em;
   color: rgba(245, 245, 245, 0.6);
   text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.primary-nav {
+  flex-shrink: 0;
 }
 
 .primary-nav ul {
@@ -143,6 +160,7 @@ main {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.38em;
+  align-items: center;
 }
 
 .primary-nav a {
@@ -375,6 +393,13 @@ main {
   stroke: var(--color-charcoal);
   stroke-width: 3;
   filter: drop-shadow(0 10px 25px rgba(197, 160, 89, 0.45));
+  transition: transform var(--transition-base), fill var(--transition-base);
+}
+
+.site-marker:hover .marker-circle,
+.site-marker:focus .marker-circle {
+  fill: var(--color-gold);
+  transform: scale(1.1);
 }
 
 .site-marker:hover,
