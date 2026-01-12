@@ -78,23 +78,23 @@
     </section>
 
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div class="modal-header-img">
-                <img src="" alt="" id="modal-img">
-                <div class="modal-overlay-title">
-                    <h2 id="modal-title">Заглавие</h2>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="tags">
-                    <span id="modal-year" class="tag year"></span>
-                    <span id="modal-type" class="tag type"></span>
-                </div>
-                <p id="modal-desc">Описание</p>
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-header-img">
+            <button class="slider-btn prev" onclick="changeImage(-1)">&#10094;</button>
+            <img src="" alt="" id="modal-img">
+            <button class="slider-btn next" onclick="changeImage(1)">&#10095;</button>
+            
+            <div class="modal-overlay-title">
+                <h2 id="modal-title">Заглавие</h2>
             </div>
         </div>
+        <div class="modal-body">
+            <p id="modal-type"></p>
+            <p id="modal-desc"></p>
+        </div>
     </div>
+</div>
 
     <footer id="contacts">
         <div class="footer-container">
