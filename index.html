@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЮНЕСКО България | Интерактивно пътешествие</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo">UNESCO<span>BG</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Начало</a></li>
+            <li><a href="#timeline-section">Обекти</a></li>
+            <li><a href="#quiz-section">Игра</a></li>
+            <li><a href="#contacts">Контакти</a></li>
+        </ul>
+        <button id="theme-toggle" title="Смени темата">🌙</button>
+    </nav>
+
+    <header id="hero">
+        <div class="overlay">
+            <div class="hero-content">
+                <span class="subtitle">Национално богатство</span>
+                <h1>Вечното наследство на България</h1>
+                <p>Открий 10-те чудеса, които накараха света да затаи дъх.</p>
+                <div class="hero-buttons">
+                    <a href="#timeline-section" class="btn-primary">Разгледай обектите</a>
+                    <a href="#quiz-section" class="btn-secondary">Тествай знанията си</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats">
+        <div class="stat-box">
+            <h3 id="count-cultural">0</h3>
+            <p>Културни обекта</p>
+        </div>
+        <div class="stat-box">
+            <h3 id="count-natural">0</h3>
+            <p>Природни обекта</p>
+        </div>
+        <div class="stat-box">
+            <h3 id="count-total">0</h3>
+            <p>Общо обекти</p>
+        </div>
+    </section>
+
+    <main id="timeline-section">
+        <div class="section-header">
+            <h2>Съкровищата на България</h2>
+            <p>Кликнете върху снимка, за да видите детайли и история.</p>
+        </div>
+        
+        <div class="timeline" id="timeline-container">
+            </div>
+    </main>
+
+    <section id="quiz-section">
+        <div class="section-header">
+            <h2 style="color:white">Колко добре познаваш България?</h2>
+        </div>
+        <div class="quiz-wrapper">
+            <div id="quiz-card">
+                <div class="quiz-head">
+                    <span id="q-number">Въпрос 1 от 4</span>
+                    <span id="score-live">Точки: 0</span>
+                </div>
+                <h3 id="question">Въпросът се зарежда...</h3>
+                <div id="answer-buttons" class="btn-grid"></div>
+                <button id="next-btn" class="hide">Следващ</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header-img">
+                <img src="" alt="" id="modal-img">
+                <div class="modal-overlay-title">
+                    <h2 id="modal-title">Заглавие</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="tags">
+                    <span id="modal-year" class="tag year"></span>
+                    <span id="modal-type" class="tag type"></span>
+                </div>
+                <p id="modal-desc">Описание</p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contacts">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">UNESCO<span>BG</span></div>
+                <p>Сайта е направен за ПЪРВИ КРЪГ на национално състезание по информационни технологии и програмиране IT Знайко 2026</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Карта на сайта</h3>
+                <ul class="footer-links">
+                    <li><a href="#hero">› Начало</a></li>
+                    <li><a href="#timeline-section">› Всички обекти</a></li>
+                    <li><a href="#quiz-section">› Играй куиз</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Официални източници</h3>
+                <ul class="footer-links">
+                    <li>
+                        <a href="https://whc.unesco.org/en/statesparties/bg" target="_blank" class="external-link">
+                            › UNESCO Official Site <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://mc.government.bg/" target="_blank" class="external-link">
+                            › Министерство на културата <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+    <h3>Контакти</h3>
+    <div class="contact-item">
+        <span>📍</span> 
+        <p>гр. София, България</p>
+    </div>
+    <div class="contact-item">
+        <span>📧</span> 
+        <p>codeavengers.team@gmail.com</p>
+    </div>
+    <div class="contact-item">
+        <span>🏫</span> 
+        <p>СофтУни БУДИТЕЛ - гимназия за дигитални умения</p>
+    </div>
+</div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2026 Проект Културно Наследство. Всички права запазени.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
